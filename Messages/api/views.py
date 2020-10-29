@@ -30,7 +30,6 @@ class createNewView(generics.CreateAPIView):
         try:
             r = requests.get(url)
             data = r.json()
-            print(data)
             serializer = apiMessagesSerializer(data={
                 "confirmed": data['confirmed']['value'],
                 "recovered": data['recovered']['value'],
@@ -46,7 +45,7 @@ class createNewView(generics.CreateAPIView):
                 # 'test_required': "Yes"
             })
             if serializer.is_valid():
-                # return Response("Data is saved for {}".format(countryCode))
+                serializer.save()
                 return Response("Data is saved successfully", status=status.HTTP_201_CREATED)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
