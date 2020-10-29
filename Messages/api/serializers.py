@@ -37,7 +37,6 @@ class messagesSerializer(serializers.ModelSerializer):
     api = APISerializer(many=True, read_only=True)
     # messages = bulkMessagesSerializer(many=True)
     # content = serializers.ReadOnlyField()
-    get_last_updated_date = serializers.ReadOnlyField()
 
     class Meta:
         model = MessagesFromAPI

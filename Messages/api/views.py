@@ -46,7 +46,6 @@ class createNewView(generics.CreateAPIView):
                 # 'test_required': "Yes"
             })
             if serializer.is_valid():
-                print('from serailizer', serializer)
                 # return Response("Data is saved for {}".format(countryCode))
                 return Response("Data is saved successfully", status=status.HTTP_201_CREATED)
             else:
@@ -57,7 +56,7 @@ class createNewView(generics.CreateAPIView):
 
 class viewMessages(generics.ListAPIView):
     queryset = MessagesFromAPI.objects.distinct(
-        'country_id').order_by('-country_id', '-timestamp')
+        'country_id').order_by('country_id', '-timestamp')
     serializer_class = messagesSerializer
 
 
