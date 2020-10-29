@@ -61,4 +61,4 @@ class apiMessagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = MessagesFromAPI
         fields = ('test_required', 'confirmed', 'deaths', 'recovered',
-                  'country', 'restricted_countries', 'api', 'content', "priority")
+                  'country', 'restricted_countries', 'api', 'content')

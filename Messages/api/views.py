@@ -25,11 +25,12 @@ class createNewView(generics.CreateAPIView):
         restricted_countries = self.request.data.get('restricted_countries')
         test_required = self.request.data.get('test_required')
         content = self.request.data.get('content')
-        url = mathdroidAPI+countryCode
+        url = mathdroidAPI+countryCode+"/"
 
         try:
             r = requests.get(url)
             data = r.json()
+            print(data)
             serializer = apiMessagesSerializer(data={
                 "confirmed": data['confirmed']['value'],
                 "recovered": data['recovered']['value'],
@@ -45,17 +46,18 @@ class createNewView(generics.CreateAPIView):
                 # 'test_required': "Yes"
             })
             if serializer.is_valid():
-                serializer.save()
+                print('from serailizer', serializer)
                 # return Response("Data is saved for {}".format(countryCode))
                 return Response("Data is saved successfully", status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except:
             return Response("Url doesn't work", status=r.status_code)
 
 
 class viewMessages(generics.ListAPIView):
     queryset = MessagesFromAPI.objects.distinct(
-        'country_id').order_by('country_id', '-timestamp')
+        'country_id').order_by('-country_id', '-timestamp')
     serializer_class = messagesSerializer
 
 
