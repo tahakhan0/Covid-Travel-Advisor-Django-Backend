@@ -167,12 +167,12 @@ SIMPLE_JWT = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://covid-travel-assitant.herokuapp.com"
+    "https://covid-travel-assitant.herokuapp.com"
 ]
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "http://covid-travel-assitant.herokuapp.com"
+    "https://covid-travel-assitant.herokuapp.com"
 ]
 
 
