@@ -55,7 +55,7 @@ class createNewView(generics.CreateAPIView):
 
 class viewMessages(generics.ListAPIView):
     queryset = MessagesFromAPI.objects.distinct(
-        'country_id').order_by('country_id', '-timestamp')
+        'country_id').order_by('-country_id', '-timestamp')
     serializer_class = messagesSerializer
 
 
