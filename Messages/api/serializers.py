@@ -3,7 +3,7 @@ from rest_framework import serializers
 from Messages.models import *
 
 
-class countrySerializer (serializers.ModelSerializer):
+class countrySerializer (serializers.):
     class Meta:
         model = Country
         fields = ("name", "country_code")

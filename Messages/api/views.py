@@ -1,6 +1,4 @@
-from .serializers import *
-from rest_framework import generics
-from Messages.models import *
+s
 from rest_framework import mixins
 from rest_framework.response import Response
 from .services import *
@@ -26,7 +24,6 @@ class createNewView(generics.CreateAPIView):
         test_required = self.request.data.get('test_required')
         content = self.request.data.get('content')
         url = mathdroidAPI+countryCode+"/"
-
         try:
             r = requests.get(url)
             data = r.json()
